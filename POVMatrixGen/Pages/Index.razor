@@ -4,17 +4,50 @@
 
 <h1>POVMatrixGen</h1>
 
-<div>
-        <p>Welcome to your new app.</p>
-    <p>Use this site to generate a POV matrix for your POV display.</p>
+@using System.Linq
+<div class="grid-container">
+    @foreach (var row in Enumerable.Range(0, 7))
+    {
+        <div class="grid-row">
+            @foreach (var col in Enumerable.Range(0, columns))
+            {
+                <div class="grid-item" id="dot-@row-@col">
+                    
+                </div>
+            }
+        </div>
+    }
 </div>
-<div>
 
-</div>
 <style>
-    #container {
-        display : grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 1fr 1fr;
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(@columns, 1fr);
+        gap: 10px;
+        width: 10px;
+        height: 10px;
+    }
+
+    .grid-row {
+        display: contents;
+    }
+
+    .grid-item {
+        background-color: lightgray;
+        border: 1px solid black;
+        padding: 20px;
+        text-align: center;
     }
 </style>
+@code{
+    //Github Copilotによる実装
+    int columns = 40;
+    private void ToggleDot(int row, int col)
+    {
+        // var dot = document.GetElementById($"dot-{row}-{col}");
+        // if (dot != null)
+        // {
+        //     dot.ClassList.Toggle("active");
+        // }
+    }
+}
